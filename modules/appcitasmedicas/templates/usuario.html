@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Usuario</title>
+
+    <!-- Styles -->
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.3.3/css/swiper.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Carter+One&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../static/css/styles.css">
+</head>
+<body class="usuario">
+    <div class="wrapper">
+        
+        <!-- Header -->
+        <div class="cont-header">
+            <div class="logo">
+                <a href="/"><img src="../static/img/logo.png" alt="Medical" /></a>
+            </div>
+            <div class="nav">
+                <div class="date-user">
+                    <div class="box-name-user"><p><strong>Bienvenido</strong> <span class="name">{{paciente.nombres}}</span></p></div>
+                    <div class="btn-logout"><a href="/logout/">Salir</a></div>
+                    <img class="icon-user" src="../static/img/icon-user.png" />
+                </div>
+                <!-- Menu -->
+                <div class="menu-superior">
+                    <div class="menu-toggle">
+                        <span class="fa fa-plus"></span>
+                    </div>
+                    <div class="menu-line">
+                        <div class="btn-app">
+                            <a href ="/agendamiento">
+                                <div class="icon-nav">
+                                    <span class="fa fa-calendar"></span>
+                                </div>
+                                <div class="item-menu">Agendar Cita</div>
+                            </a>
+                        </div>
+                        <div class="btn-app">
+                            <a href ="/consultas">
+                                <div class="icon-nav">
+                                    <i class="fa fa-list-alt"></i>
+                                </div>
+                                <div class="item-menu">Consultar</div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        
+        <!-- Content -->
+        <div class="content">
+            <!-- Img Lateral -->
+            <div class="col-user col-left cont-img-lateral">
+                <img class="img-lateral" src="../static/img/img-usuario.png">
+            </div>
+            <!-- Contenido Usuario -->
+            <div class="col-user col-right">
+                <!-- Contenido inicial-->
+                <div id="box-inicial" class="box-contenido-usuario">
+                    <div class="cont-usuario">
+                        <h2>Bienvenido</h2>
+                        <p>Aquí podra solicitar, consultar o modificar una cita medica</p>
+                    </div>
+                </div>
+                
+                
+                <!-- Contenido Cancelar Cita -->
+                <div id="box-cancelar" class="box-contenido-usuario">
+                    <form>
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Cédula de ciudadanía Paciente</label>
+                            <input type="date" class="form-control" id="nombreUsuario" aria-describedby="emailHelp"/>
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Fecha</label>
+                            <input type="date" class="form-control" id="nombreUsuario" aria-describedby="emailHelp"/>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="exampleInputPassword1">Ciudad</label>
+                            <input type="text" class="form-control" id="passwordUsuario" />
+                        </div>
+
+                        <div class="form-group">
+                            <label for="exampleFormControlSelect1">Médico</label>
+                            <select class="form-control" id="exampleFormControlSelect1">
+                                <option>Alvaro Catellar</option>
+                                <option>Elkin Bedoya</option>
+                                <option>Mauricio Blanco</option>
+                                <option>Tito Maturana</option>
+                            </select>
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-enviar">Agendar</button>
+                    </form>
+                </div>
+                
+                <!-- Contenido Consultar Cita -->
+                <div id="box-consultar" class="box-contenido-usuario"></div>
+            </div>
+        </div>
+
+    </div>
+
+    
+    <!-- Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.3.3/js/swiper.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <script src="../static/js/custom.js"></script>
+</body>
+</html>
