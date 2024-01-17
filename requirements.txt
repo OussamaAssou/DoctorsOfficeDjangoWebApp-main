@@ -42,3 +42,4 @@ threadpoolctl
 urllib3
 Werkzeug
 whitenoise
+#python==3.10
