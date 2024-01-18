@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -15,7 +15,7 @@
   <div class="form-group">
     {% if 'id_paciente' in request.session %}
       <p>
-        Hola! {{paciente.nombres}}
+        Salut! {{paciente.nombres}}
       </p>
     {% endif %}  
   </div>
@@ -24,7 +24,7 @@
     
   </div>
 
-  <button type="submit" class="btn btn-primary">Salir</button>
+  <button type="submit" class="btn btn-primary">Déconnexion</button>
 </form>
 
 </div>

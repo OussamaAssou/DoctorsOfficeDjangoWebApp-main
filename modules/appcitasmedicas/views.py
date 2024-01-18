@@ -1,90 +1,80 @@
-from typing import ContextManager
-from modules.appcitasmedicas.models import *            # Importer les modèles dans le fichier models.py
-from django.shortcuts import render, redirect           # fonctions pour générer les réponses HTTP
-from django.core.exceptions import ObjectDoesNotExist   # Exception levée quand la rqt ne revoie rien
-from django.http import JsonResponse                    # Retourner des réponses JSON
+from modules.appcitasmedicas.models import *            
+from django.shortcuts import render, redirect           
+from django.core.exceptions import ObjectDoesNotExist   
+from django.http import JsonResponse                    
 
-# Create your views here.
-def home(request):                                      # Vue Home affiche la page d'accueil
-
+# Vue pour la page d'accueil
+def home(request):                                      
     try:
-        del request.session['id_paciente']              # Supprime la clé ID patient si existe déjà sinon ignore
+        del request.session['id_paciente']              
     except KeyError:
         pass
+    return render(request, 'home.html')                 
 
-    return render(request, 'home.html')                 # Retourne la page home
-
-def autenticar(request):                # Gère l'authentification des utilisateurs
-
-    #Authenticate user
+# Vue pour l'authentification des utilisateurs
+def autenticar(request):                
     try:
         if request.method == "POST":
-            usuario = request.POST["username"]      # Récupère les informations de connexion
+            usuario = request.POST["username"]      
             password = request.POST["password"]
-
-            paciente = Paciente.objects.get(id=usuario, password=password) # Récupère un objet Patient correspondant
-        
+            paciente = Paciente.objects.get(id=usuario, password=password) 
             context = {"paciente" : paciente}
-            request.session['id_paciente'] = paciente.id # Stocke l'ID Patient dans la session
-    
-
+            request.session['id_paciente'] = paciente.id 
     except ObjectDoesNotExist:
-        context = {"mensaje" : "Paciente y/o contraseña inválidos."} # Message d'erreur - pas de patient existant
+        context = {"mensaje" : "Identifiant et/ou mot de passe incorrects."}
         return render(request, 'login.html', context)    
-
     return render(request, 'usuario.html', context)
 
+# Vue pour la déconnexion
 def logout(request):
-
     try:
         del request.session['id_paciente']
     except KeyError:
         pass
-
     return render(request, 'home.html')
     
+# Vue pour la page de connexion
 def login(request):
-
     return render(request, 'login.html')
 
+# Vue pour la page utilisateur
 def usuario(request):
     paciente = Paciente.objects.get(id= request.session['id_paciente'])
-
     context = {"paciente":paciente}
-
     return render(request, 'usuario.html', context)
 
+# Vue pour la page d'agenda
 def agendamiento(request):
     paciente = Paciente.objects.get(id= request.session['id_paciente'])
-
     context = {"paciente":paciente}
     return render(request, 'agendamiento.html', context)
 
+# Vue pour récupérer la liste des médecins en format JSON
 def medicos(request):
     medicos = Medico.objects.all().order_by('apellidos')
-
-    return JsonResponse(list(medicos.values('id', 'apellidos', 'nombres')), safe = False)
+    return JsonResponse(list(medicos.values('id', 'apellidos', 'nombres')), safe=False)
     
+# Vue pour la page de consultations
 def consultas(request):
-    citas = Cita.objects.filter(paciente= request.session['id_paciente'], cancelada = 'N').order_by('-id') # creo el querySet 
-    #[::-1]
+    citas = Cita.objects.filter(paciente= request.session['id_paciente'], cancelada='N').order_by('-id')
     paciente = Paciente.objects.get(id= request.session['id_paciente'])
-    #cita_paciente = Cita.objects.fil.all() () # creo el querySet 
-    context = {"citas":citas,"paciente":paciente} # Creo el contexto para pasarlo a la pagina
+    context = {"citas":citas, "paciente":paciente}
     return render(request, 'consultas.html', context)
 
+# Vue pour annuler un rendez-vous
 def cancelar(request, id):
-    citas=Cita.objects.get(id=id)
-    citas.cancelada='S'
+    citas = Cita.objects.get(id=id)
+    citas.cancelada = 'S'
     citas.save()
     return redirect('consultas')
 
+# Vue pour récupérer la liste des heures disponibles en format JSON
 def horas(request):
-    citas = Cita.objects.filter(medico= request.POST['idmedico'], fecha= request.POST['fechacita'], cancelada = 'N').values('hora')
+    citas = Cita.objects.filter(medico=request.POST['idmedico'], fecha=request.POST['fechacita'], cancelada='N').values('hora')
     horas = CitaHora.objects.all().exclude(id__in=citas).order_by('hora')
+    return JsonResponse(list(horas.values('id', 'hora')), safe=False)
 
-    return JsonResponse(list(horas.values('id', 'hora')), safe = False)
-
+# Vue pour enregistrer un rendez-vous
 def cita(request):
     if request.method == "POST":
         cita = Cita()
@@ -93,5 +83,4 @@ def cita(request):
         cita.hora = CitaHora.objects.get(id=request.POST['hora'])
         cita.fecha = request.POST['fechacita']
         cita.save()
-
     return redirect('consultas')

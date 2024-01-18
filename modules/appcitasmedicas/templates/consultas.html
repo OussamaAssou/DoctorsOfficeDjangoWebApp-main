@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Iniciar Sesión</title>
+    <title>Commencer la session</title>
 
     <!-- Styles -->
     <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous" />
@@ -22,11 +22,11 @@
             <div class="logo">
                 <a href="/"><img src="../static/img/logo.png" alt="Medical" /></a>
             </div>
-            <a href="/usuario"class="volver" ><i class="fa fa-reply"></i><span>Volver</span></a>
+            <a href="/usuario" class="volver" ><i class="fa fa-reply"></i><span>Retour</span></a>
             <div class="nav">
                 <div class="date-user">
-                    <div class="box-name-user"><p><strong>Bienvenido</strong> <span class="name">{{paciente.nombres}}</span></p></div>
-                     <div class="btn-logout"><a href="/logout/">Salir</a></div>
+                    <div class="box-name-user"><p><strong>Bienvenue</strong> <span class="name">{{paciente.nombres}}</span></p></div>
+                    <div class="btn-logout"><a href="/logout/">Déconnexion</a></div>
                     <img class="icon-user" src="../static/img/icon-user.png" />
                 </div>
                 <!-- Menu -->
@@ -36,31 +36,31 @@
                     </div>
                     <div class="menu-line">
                         <div class="btn-app">
-                            <a href ="/agendamiento">
+                            <a href="/agendamiento">
                                 <div class="icon-nav">
                                     <span class="fa fa-calendar"></span>
                                 </div>
-                                <div class="item-menu">Agendar Cita</div>
+                                <div class="item-menu">Planifier un rendez-vous</div>
                             </a>
                         </div>
                         <div class="btn-app">
-                            <a href ="/consultas">
+                            <a href="/consultas">
                                 <div class="icon-nav">
                                     <i class="fa fa-list-alt"></i>
                                 </div>
-                                <div class="item-menu">Consultar</div>
+                                <div class="item-menu">Consulter</div>
                             </a>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="content-formulario">
+        <div class="content-formulaire">
             <div class="header">
-                <h1 class="title-section">Consultas</h1>                    
+                <h1 class="title-section">Consultations</h1>                    
             </div>
             <div class="img-lateral">
-                <img src="../static/img/img-banner-1.png" class="Iniciar Sesi{on" />
+                <img src="../static/img/img-banner-1.png" class="Commencer Sesi{on" />
             </div>
             <div class="interna-body">
                 <p class="mns-error">{{mensaje}}</p>
@@ -68,11 +68,11 @@
                     <table id="Consultas-citas" class="table">
                         <thead class="thead-dark">
                             <tr>
-                            <th scope="col">Fecha</th>
-                            <th scope="col">Hora</th>
-                            <th scope="col">Doctor</th>
-                            <th scope="col">Especialidad</th>
-                            <th scope="col">Cancelar</th>
+                                <th scope="col">Date</th>
+                                <th scope="col">Heure</th>
+                                <th scope="col">Docteur</th>
+                                <th scope="col">Spécialité</th>
+                                <th scope="col">Annuler</th>
                             </tr>
                         </thead>
                         <tbody>                            
@@ -88,7 +88,7 @@
                                        {% comment %}<td><a class="btn-cancelar"><i class="fa fa-calendar-times-o"></i></a>{% endcomment %}
                                        {% comment %}<td><div class="btn-cancelar"><i class="fa fa-calendar-times-o"></i><a href="{% url 'cancelar' cita.id %}" onclick="return confirm('Esta seguro de Cancelar la Cita?');" >Cancelar</a></div>{% endcomment %}
                                        <td><div class="btn-cancelar"><center>
-                                                 <a href="{% url 'cancelar' cita.id %}" onclick="return confirm('Esta seguro de Cancelar la Cita?');">
+                                                 <a href="{% url 'cancelar' cita.id %}" onclick="return confirm('Êtes-vous sûr de vouloir annuler le rendez-vous ?');">
                                                  <i class="fa fa-calendar-times-o"></i>
                                              </div>    
                                              </a>
@@ -96,7 +96,7 @@
                                     </tr>
                                 {% endfor %}
                             {% else %}
-                                <h3>Usted no tiene registro de citas</h3>
+                                <h3>Vous n'avez pas d'enregistrement de rendez-vous</h3>
                             {% endif %}                                                        
                         </tbody>
                     </table>

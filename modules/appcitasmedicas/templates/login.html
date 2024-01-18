@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Iniciar Sesión</title>
+    <title>Connexion</title>
 
     <!-- Styles -->
     <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous" />
@@ -27,10 +27,10 @@
         <div class="container">
             <div class="login-content">
                 <div class="login-header">
-                    <h1 class="login-title" id="exampleModalLabel">Oficina Virtual</h1>                    
+                    <h1 class="login-title" id="exampleModalLabel">Bureau Virtuel</h1>                    
                 </div>
                 <div class="login-body">
-                    <h2>Iniciar sesión</h2>
+                    <h2>Connexion</h2>
                     
                     <p class="mns-error">{{mensaje}}</p>
                     
@@ -39,18 +39,18 @@
                     </div>
                     <form action="/autenticar/" method="POST">{% csrf_token %}
                         <div class="form-group">
-                            <label for="exampleInputEmail1">ID Paciente</label>
+                            <label for="exampleInputEmail1">ID Patient</label>
                             <input type="number" class="form-control" id="nombreUsuario" name="username" aria-describedby="emailHelp"/>
                         </div>
 
                         <div class="form-group">
-                            <label for="exampleInputPassword1">Password</label>
+                            <label for="exampleInputPassword1">Mot de passe</label>
                             <input type="password" class="form-control" id="passwordUsuario" name="password"/>
                         </div>
                             <div class="form-group">
                             <label class="error">{{mensaje}}</label>
                         </div>
-                        <button type="submit" class="btn btn-primary btn-enviar">Ingresar</button>
+                        <button type="submit" class="btn btn-primary btn-enviar">Se connecter</button>
                     </form>
                 </div>
             </div>

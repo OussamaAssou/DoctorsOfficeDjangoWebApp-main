@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Iniciar Sesión</title>
+    <title>Commencer la session</title>
 
     <!-- Styles -->
     <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous" />
@@ -22,11 +22,11 @@
             <div class="logo">
                 <a href="/"><img src="../static/img/logo.png" alt="Medical" /></a>
             </div>
-            <a href="/usuario"class="volver" ><i class="fa fa-reply"></i><span>Volver</span></a>
+            <a href="/usuario"class="volver" ><i class="fa fa-reply"></i><span>Retour</span></a>
             <div class="nav">
                 <div class="date-user">
-                    <div class="box-name-user"><p><strong>Bienvenido</strong> <span class="name">{{paciente.nombres}}</span></p></div>
-                    <div class="btn-logout"><a href="/logout/">Salir</a></div>
+                    <div class="box-name-user"><p><strong>Bienvenue</strong> <span class="name">{{paciente.nombres}}</span></p></div>
+                    <div class="btn-logout"><a href="/logout/">Déconnexion</a></div>
                     <img class="icon-user" src="../static/img/icon-user.png" />
                 </div>
                 <!-- Menu -->
@@ -40,7 +40,7 @@
                                 <div class="icon-nav">
                                     <span class="fa fa-calendar"></span>
                                 </div>
-                                <div class="item-menu">Agendar Cita</div>
+                                <div class="item-menu">Planifier un rendez-vous</div>
                             </a>
                         </div>
                         <div class="btn-app">
@@ -48,41 +48,41 @@
                                 <div class="icon-nav">
                                     <i class="fa fa-list-alt"></i>
                                 </div>
-                                <div class="item-menu">Consultar</div>
+                                <div class="item-menu">Consulter</div>
                             </a>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="content-formulario">
+        <div class="content-formulaire">
             <div class="header">
-                <h1 class="title-section">Agendamiento</h1>                    
+                <h1 class="title-section">Planification</h1>                    
             </div>
             <div class="img-lateral">
-                <img src="../static/img/img-banner-1.png" class="Iniciar Sesi{on" />
+                <img src="../static/img/img-banner-1.png" class="Commencer Sesi{on" />
             </div>
             <div class="interna-body">
                 <form action="/cita/" method="POST">{% csrf_token %}
                     <div class="form-group">
-                        <label for="exampleInputEmail1">ID Paciente</label>
+                        <label for="exampleInputEmail1">ID Patient</label>
                         <input type="number" class="form-control" id="idpaciente" name="idpaciente" aria-describedby="emailHelp" readonly value="{{paciente.id}}"/>
                     </div>
 
                     <div class="form-group">
-                        <label for="exampleInputEmail1">Fecha</label>
+                        <label for="exampleInputEmail1">Date</label>
                         <input type="date" class="form-control" id="fechacita" aria-describedby="emailHelp" name="fechacita" required/>
                     </div>
 
                     <div class="form-group">
-                        <label for="exampleFormControlSelect1">Médico</label>
+                        <label for="exampleFormControlSelect1">Médecin</label>
                         <select class="form-control" id="idmedico" name="idmedico" required>
                             <option value="">---------</option>
                         </select>
                     </div>
 
                     <div class="form-group">
-                        <label for="hora">Hora</label>
+                        <label for="hora">Heure</label>
                         <select class="form-control" id="hora" name="hora" required>
                             <option value="">---------</option>
                         </select>
@@ -91,11 +91,11 @@
                         <p id="jqtest"></p>
                     </div>
                     <div class="form-group" style="visibility: hidden">
-                        <label for="exampleInputPassword1">Ciudad</label>
+                        <label for="exampleInputPassword1">Ville</label>
                         <input type="text" class="form-control" id="passwordUsuario" />
                     </div>
 
-                    <button type="submit" class="btn btn-primary btn-enviar">Agendar</button>
+                    <button type="submit" class="btn btn-primary btn-enviar">Planifier</button>
                 </form>
             </div>
         </div>
@@ -110,14 +110,14 @@
     <script type="text/javascript">
         $(document).ready(
             function(){
-            $("#jqtest").html("JQuery installed successfully!");
+            $("#jqtest").html("JQuery installé avec succès !");
             }
         );
     </script>
     <!-- script type="text/javascript">
         $(document).ready(function(){
             $('#idmedico').change(function() {
-                $("#jqtest").html("Changed date XOXO!");
+                $("#jqtest").html("Date modifiée XOXO !");
             })
         });
     </script -->
@@ -135,15 +135,15 @@
                         csrfmiddlewaretoken: '{{ csrf_token }}'
                     },
                     success: function(data) {
-                        console.log(data) // check out how data is structured
+                        console.log(data) // vérifier comment les données sont structurées
 
-                        // Update the coin amount
-                        //$("#jqtest").html("Changed date XOXO! ");
+                        // Mettre à jour la quantité de coins
+                        //$("#jqtest").html("Date modifiée XOXO! ");
                         let html_data = '<option value="">---------</option>';
                         data.forEach(function (data) {
                             html_data += `<option value="${data.id}">${data.hora}</option>`
                         });
-                        $("#hora").html(html_data); // replace the contents of the topic input with the data that came from the server
+                        $("#hora").html(html_data); // remplacer le contenu de l'entrée de sujet par les données provenant du serveur
             
                     }
                 })
@@ -165,7 +165,7 @@
                 var todaysDate = new Date().ddmmyyyy();
                 //alert(selectedDate + '<===>' + todaysDate);
                 if (selectedDate <= todaysDate) {
-                    alert('La fecha seleccionada no puede ser inferior o igual a la actual');
+                    alert('La date sélectionnée ne peut pas être inférieure ou égale à la date actuelle');
                     $(this).val('');
                 } else {
                     $.ajax({
@@ -175,15 +175,15 @@
                             csrfmiddlewaretoken: '{{ csrf_token }}'
                         },
                         success: function(data) {
-                            console.log(data) // check out how data is structured
+                            console.log(data) // vérifier comment les données sont structurées
 
-                            // Update the coin amount
-                            //$("#jqtest").html("Changed date XOXO! ");
+                            // Mettre à jour la quantité de coins
+                            //$("#jqtest").html("Date modifiée XOXO! ");
                             let html_data = '<option value="">---------</option>';
                             data.forEach(function (data) {
                                 html_data += `<option value="${data.id}">${data.apellidos}, ${data.nombres}</option>`
                             });
-                            $("#idmedico").html(html_data); // replace the contents of the topic input with the data that came from the server
+                            $("#idmedico").html(html_data); // remplacer le contenu de l'entrée de sujet par les données provenant du serveur
                 
                         }
                     })

@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Usuario</title>
+    <title>Utilisateur</title>
 
     <!-- Styles -->
     <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous" />
@@ -16,18 +16,18 @@
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet">
     <link rel="stylesheet" href="../static/css/styles.css">
 </head>
-<body class="usuario">
+<body class="utilisateur">
     <div class="wrapper">
         
-        <!-- Header -->
+        <!-- En-tête -->
         <div class="cont-header">
             <div class="logo">
                 <a href="/"><img src="../static/img/logo.png" alt="Medical" /></a>
             </div>
             <div class="nav">
                 <div class="date-user">
-                    <div class="box-name-user"><p><strong>Bienvenido</strong> <span class="name">{{paciente.nombres}}</span></p></div>
-                    <div class="btn-logout"><a href="/logout/">Salir</a></div>
+                    <div class="box-name-user"><p><strong>Bienvenue</strong> <span class="name">{{patient.noms}}</span></p></div>
+                    <div class="btn-logout"><a href="/logout/">Quitter</a></div>
                     <img class="icon-user" src="../static/img/icon-user.png" />
                 </div>
                 <!-- Menu -->
@@ -41,7 +41,7 @@
                                 <div class="icon-nav">
                                     <span class="fa fa-calendar"></span>
                                 </div>
-                                <div class="item-menu">Agendar Cita</div>
+                                <div class="item-menu">Planifier un rendez-vous</div>
                             </a>
                         </div>
                         <div class="btn-app">
@@ -49,7 +49,7 @@
                                 <div class="icon-nav">
                                     <i class="fa fa-list-alt"></i>
                                 </div>
-                                <div class="item-menu">Consultar</div>
+                                <div class="item-menu">Consulter</div>
                             </a>
                         </div>
                     </div>
@@ -58,42 +58,42 @@
         </div>
         
         
-        <!-- Content -->
+        <!-- Contenu -->
         <div class="content">
-            <!-- Img Lateral -->
+            <!-- Image latérale -->
             <div class="col-user col-left cont-img-lateral">
                 <img class="img-lateral" src="../static/img/img-usuario.png">
             </div>
-            <!-- Contenido Usuario -->
+            <!-- Contenu de l'utilisateur -->
             <div class="col-user col-right">
-                <!-- Contenido inicial-->
+                <!-- Contenu initial -->
                 <div id="box-inicial" class="box-contenido-usuario">
                     <div class="cont-usuario">
-                        <h2>Bienvenido</h2>
-                        <p>Aquí podra solicitar, consultar o modificar una cita medica</p>
+                        <h2>Bienvenue</h2>
+                        <p>Ici, vous pouvez demander, consulter ou modifier un rendez-vous médical.</p>
                     </div>
                 </div>
                 
                 
-                <!-- Contenido Cancelar Cita -->
+                <!-- Contenu Annuler le rendez-vous -->
                 <div id="box-cancelar" class="box-contenido-usuario">
                     <form>
                         <div class="form-group">
-                            <label for="exampleInputEmail1">Cédula de ciudadanía Paciente</label>
+                            <label for="exampleInputEmail1">Carte d'identité du patient</label>
                             <input type="date" class="form-control" id="nombreUsuario" aria-describedby="emailHelp"/>
                         </div>
                         <div class="form-group">
-                            <label for="exampleInputEmail1">Fecha</label>
+                            <label for="exampleInputEmail1">Date</label>
                             <input type="date" class="form-control" id="nombreUsuario" aria-describedby="emailHelp"/>
                         </div>
 
                         <div class="form-group">
-                            <label for="exampleInputPassword1">Ciudad</label>
+                            <label for="exampleInputPassword1">Ville</label>
                             <input type="text" class="form-control" id="passwordUsuario" />
                         </div>
 
                         <div class="form-group">
-                            <label for="exampleFormControlSelect1">Médico</label>
+                            <label for="exampleFormControlSelect1">Médecin</label>
                             <select class="form-control" id="exampleFormControlSelect1">
                                 <option>Alvaro Catellar</option>
                                 <option>Elkin Bedoya</option>
@@ -101,11 +101,11 @@
                                 <option>Tito Maturana</option>
                             </select>
                         </div>
-                        <button type="submit" class="btn btn-primary btn-enviar">Agendar</button>
+                        <button type="submit" class="btn btn-primary btn-enviar">Planifier</button>
                     </form>
                 </div>
                 
-                <!-- Contenido Consultar Cita -->
+                <!-- Contenu Consulter le rendez-vous -->
                 <div id="box-consultar" class="box-contenido-usuario"></div>
             </div>
         </div>
