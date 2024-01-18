@@ -1,35 +1,35 @@
 from typing import ContextManager
-from modules.appcitasmedicas.models import *
-from django.shortcuts import render, redirect
-from django.core.exceptions import ObjectDoesNotExist
-from django.http import JsonResponse
+from modules.appcitasmedicas.models import *            # Importer les modèles dans le fichier models.py
+from django.shortcuts import render, redirect           # fonctions pour générer les réponses HTTP
+from django.core.exceptions import ObjectDoesNotExist   # Exception levée quand la rqt ne revoie rien
+from django.http import JsonResponse                    # Retourner des réponses JSON
 
 # Create your views here.
-def home(request):
+def home(request):                                      # Vue Home affiche la page d'accueil
 
     try:
-        del request.session['id_paciente']
+        del request.session['id_paciente']              # Supprime la clé ID patient si existe déjà sinon ignore
     except KeyError:
         pass
 
-    return render(request, 'home.html')
+    return render(request, 'home.html')                 # Retourne la page home
 
-def autenticar(request):
+def autenticar(request):                # Gère l'authentification des utilisateurs
 
     #Authenticate user
     try:
         if request.method == "POST":
-            usuario = request.POST["username"]
+            usuario = request.POST["username"]      # Récupère les informations de connexion
             password = request.POST["password"]
 
-            paciente = Paciente.objects.get(id=usuario, password=password)
+            paciente = Paciente.objects.get(id=usuario, password=password) # Récupère un objet Patient correspondant
         
             context = {"paciente" : paciente}
-            request.session['id_paciente'] = paciente.id
+            request.session['id_paciente'] = paciente.id # Stocke l'ID Patient dans la session
     
 
     except ObjectDoesNotExist:
-        context = {"mensaje" : "Paciente y/o contraseña inválidos."}
+        context = {"mensaje" : "Paciente y/o contraseña inválidos."} # Message d'erreur - pas de patient existant
         return render(request, 'login.html', context)    
 
     return render(request, 'usuario.html', context)
